@@ -1,19 +1,50 @@
 ---
-title: "How to use this compedium"
-output: rmarkdown::html_vignette
+title: "my-compendium-vignette"
+output: 
+    bookdown::html_document2:
+      base_format: rmarkdown::html_vignette
+      number_sections: false
 vignette: >
-  %\VignetteIndexEntry{How to use this compedium}
+  %\VignetteIndexEntry{my-compendium-vignette}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+bibliography: references.bib
 ---
 
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
+```{r, include=FALSE}
+knitr::opts_chunk$set(tidy = FALSE,echo = FALSE,
+                      comment = "%%",
+                      warning = FALSE,
+                      message = FALSE)
 ```
 
 ```{r setup}
 library(mysimplecompedium)
+mysimplecompedium::hello()
 ```
+
+```{r load-data, message=FALSE}
+library(tidyverse)
+data <- data(starwars)
+knitr::read_chunk("my-external-code.R")
+```
+
+# Figure
+
+```{r starwars-plot, dependson="load-data", fig.cap="A ggplot of starwars stuff", fig.align='center', cache=TRUE}
+```
+
+We can see in Figure \@ref(fig:starwars-plot), the scatter plot of height and mass of human species.
+
+# Table
+
+```{r starwars-tbl, dependson="load-data", cache=TRUE}
+```
+
+We can see in Table \@ref(tab:starwars-tbl), some data for human species.
+
+On a site note, these articles are fun to read [@wang2019survey; @zhang2019integrating].
+
+Xian et al. says about the good, the bad and the ugly [-@xian2017zero].
+
+# References

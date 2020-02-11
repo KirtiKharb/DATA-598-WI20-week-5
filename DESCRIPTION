@@ -21,3 +21,4 @@ Suggests:
     rmarkdown
 VignetteBuilder: knitr
 Date: 2020-02-11
+RoxygenNote: 6.1.1
